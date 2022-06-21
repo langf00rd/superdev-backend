@@ -21,6 +21,23 @@ module.exports = {
         }
     },
 
+    GET_POSTS: async function (title) {
+
+        try {
+
+            console.log('GET_POSTS', title);
+
+            let post = await Post.findOne({ search_title: title })
+
+            return [true, post]
+        }
+
+        catch (e) {
+
+            return [false, e.message]
+        }
+    },
+
     GET_POST: async function (title) {
 
         try {
