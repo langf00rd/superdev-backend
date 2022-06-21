@@ -23,11 +23,6 @@ const Post = mongoose.model('post', Schema({
         }
     },
 
-    id: {
-        type: String,
-        default: Date.now()
-    },
-
     timestamp: {
         type: String,
         default: Date().substring(4, 15)
@@ -44,6 +39,11 @@ const Post = mongoose.model('post', Schema({
     },
 
     keywords: {
+        type: Array,
+        default: []
+    },
+
+    tags: {
         type: Array,
         default: []
     },
