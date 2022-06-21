@@ -21,13 +21,13 @@ module.exports = {
         }
     },
 
-    GET_POSTS: async function (title) {
+    GET_POSTS: async function () {
 
         try {
 
-            console.log('GET_POSTS', title);
+            console.log('GET_POSTS');
 
-            let post = await Post.findOne({ search_title: title })
+            let post = await Post.find({})
 
             return [true, post]
         }
