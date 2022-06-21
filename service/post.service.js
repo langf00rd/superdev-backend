@@ -57,6 +57,23 @@ module.exports = {
         }
     },
 
+    searchPosts: async function (req, res) {
+
+        try {
+
+            const [status, payload] = await POST_REPO.SEARCH_POSTS(req.params.query)
+
+            if (!status) return res.json({ status, error: payload })
+
+            return res.status(200).json({ status, payload })
+        }
+
+        catch (e) {
+
+            return res.json({ status: false, error: e.message })
+        }
+    },
+
     updateUsername: async function (req, res) {
 
         try {

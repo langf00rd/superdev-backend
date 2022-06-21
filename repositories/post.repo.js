@@ -38,13 +38,16 @@ module.exports = {
         }
     },
 
-    GET_POSTS: async function () {
+    SEARCH_POSTS: async function (payload) {
 
         try {
 
-            console.log('GET_POSTS');
+            console.log('SEARCH_POSTS', payload);
 
-            let posts = await Post.find({})
+            // let posts = await Post.find({ keywords: { $elemMatch: payload } })
+
+            let posts = await Post.find({ search_title: { $gte: payload } })
+
 
             return [true, posts]
         }
