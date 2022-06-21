@@ -46,6 +46,8 @@ module.exports = {
 
             let post = await Post.findOne({ search_title: title })
 
+            if (!post) return [false, null]
+
             return [true, post]
         }
 
