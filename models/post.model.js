@@ -28,6 +28,11 @@ const Post = mongoose.model('post', Schema({
         default: Date().substring(4, 15)
     },
 
+    description: {
+        type: String,
+        default: ''
+    },
+
     title: {
         type: String,
         default: ''
