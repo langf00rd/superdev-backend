@@ -38,13 +38,32 @@ module.exports = {
         }
     },
 
+    GET_POSTS_BY_TAGS: async function (tags) {
+
+        try {
+
+            console.log('GET_POSTS_BY_TAGS');
+
+            let post = await Post.find({ tags: { $in: tags } })
+
+            return [true, post]
+        }
+
+        catch (e) {
+
+            return [false, e.message]
+        }
+    },
+
     GET_POST: async function (title) {
 
         try {
 
-            console.log('GET_POST', title);
 
-            let post = await Post.findOne({ search_title: title })
+            let _title = title.replace('%27', "'")
+            console.log('GET_POST', _title);
+
+            let post = await Post.findOne({ search_title: _title })
 
             if (!post) return [false, null]
 

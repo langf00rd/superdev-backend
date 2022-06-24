@@ -57,6 +57,23 @@ module.exports = {
         }
     },
 
+    getPostsByTags: async function (req, res) {
+
+        try {
+
+            const [status, payload] = await POST_REPO.GET_POSTS_BY_TAGS(req.body)
+
+            if (!status) return res.json({ status, error: payload })
+
+            return res.status(200).json({ status, payload })
+        }
+
+        catch (e) {
+
+            return res.json({ status: false, error: e.message })
+        }
+    },
+
     searchPosts: async function (req, res) {
 
         try {
