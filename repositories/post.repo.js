@@ -97,7 +97,7 @@ module.exports = {
 
         try {
 
-            console.log('SEARCH_POSTS', keywords);
+            console.log('SEARCH_POSTS');
 
             let posts = await Post.find({ keywords: { $in: keywords } })
 
