@@ -78,7 +78,7 @@ module.exports = {
 
         try {
 
-            const [status, payload] = await POST_REPO.SEARCH_POSTS(req.params.query)
+            const [status, payload] = await POST_REPO.SEARCH_POSTS(req.body)
 
             if (!status) return res.json({ status, error: payload })
 

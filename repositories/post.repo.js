@@ -44,9 +44,9 @@ module.exports = {
 
             console.log('GET_POSTS_BY_TAGS');
 
-            let post = await Post.find({ tags: { $in: tags } })
+            let posts = await Post.find({ tags: { $in: tags } })
 
-            return [true, post]
+            return [true, posts]
         }
 
         catch (e) {
@@ -54,6 +54,23 @@ module.exports = {
             return [false, e.message]
         }
     },
+
+    // GET_POSTS_BY_KEYWORDS: async function (tags) {
+
+    //     try {
+
+    //         console.log('GET_POSTS_BY_TAGS', tags);
+
+    //         let posts = await Post.find({ tags: { $in: tags } })
+
+    //         return [true, posts]
+    //     }
+
+    //     catch (e) {
+
+    //         return [false, e.message]
+    //     }
+    // },
 
     GET_POST: async function (title) {
 
@@ -76,16 +93,13 @@ module.exports = {
         }
     },
 
-    SEARCH_POSTS: async function (payload) {
+    SEARCH_POSTS: async function (keywords) {
 
         try {
 
-            console.log('SEARCH_POSTS', payload);
+            console.log('SEARCH_POSTS', keywords);
 
-            // let posts = await Post.find({ keywords: { $elemMatch: payload } })
-
-            let posts = await Post.find({ search_title: { $gte: payload } })
-
+            let posts = await Post.find({ keywords: { $in: keywords } })
 
             return [true, posts]
         }
